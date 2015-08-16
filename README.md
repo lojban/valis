@@ -41,6 +41,15 @@ they are used.
 
 Options: word_prefix, word_suffix, after_word, limit
 
+Live examples from vrici.lojban.org
+---------------
+
+You can get a definitions view by choosing the language: http://vrici.lojban.org:5555/data/valsi/carce/en
+
+Here, if the user typed in "c", one can use this list to autosuggest http://vrici.lojban.org:5555/data/valsi?word_prefix=c&type=gismu
+
+Finally, there's a keywords view: http://vrici.lojban.org:5555/data/languages/eo/words
+
 Acknowledgments
 ---------------
 
