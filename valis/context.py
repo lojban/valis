@@ -1,9 +1,12 @@
 
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.cors import CORS
 
 app  = Flask(__name__)
 db   = SQLAlchemy()
+
+CORS(app, resources={"/data/*": {"origins": "*"}})
 
 VERSION = '0.1.0'
 

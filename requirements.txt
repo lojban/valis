@@ -2,5 +2,6 @@ psycopg2
 Flask
 Flask-RESTful
 Flask-SQLAlchemy
+Flask-CORS
 # marshmallow 2.* not yet released, introduces decorators
 git+https://github.com/marshmallow-code/marshmallow.git
