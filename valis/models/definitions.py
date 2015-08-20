@@ -49,6 +49,13 @@ class Query(BaseQuery):
                         subqueryload(Definition.examples).\
                                 joinedload(examples.Example.user))
 
+    def best_by_language_tag_and_valsi_word(self, language_code, word):
+        query = self.\
+                by_language_tag(language_code).\
+                by_valsi_word(word).\
+                join(Definition.best)
+        return query
+
 class Definition(db.Model, Annotated):
 
     query_class = Query
@@ -137,6 +144,12 @@ class Definition(db.Model, Annotated):
     def fetch_keyword_scores_for_definition_id(cls, definition_id):
         return word_votes.\
                 WordVote.sum_for_definition_id(definition_id)
+
+    @classmethod
+    def fetch_best_by_language_and_word(cls, language_code, word):
+        query = cls.query.\
+                best_by_language_tag_and_valsi_word(language_code, word)
+        return query.first()
 
     @property
     def language_tag(self):

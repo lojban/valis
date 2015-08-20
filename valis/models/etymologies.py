@@ -26,5 +26,6 @@ class Etymology(db.Model):
         return self.language.tag if self.language else None
 
     def __repr__(self):
-        return '<Etymology %d: "%s">' % (self.etymologyid, self.content.encode("utf-8"))
+        return '<Etymology %d: "%s">' % \
+                (self.etymologyid, self.content.encode("utf-8"))
 

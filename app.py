@@ -19,5 +19,6 @@ import config
 import valis
 
 if __name__ == '__main__':
-    valis.run(config)
+    valis.configure(config)
+    valis.run()
 

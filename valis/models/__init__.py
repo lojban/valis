@@ -33,3 +33,5 @@ from keyword_mappings import KeywordMapping
 from definition_votes import DefinitionVote
 from word_votes import WordVote
 
+from best_definitions import BestDefinition
+

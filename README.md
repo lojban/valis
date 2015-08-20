@@ -57,7 +57,7 @@ valis builds on the work of Jay Kominek, who first developed jbovlaste, as well
 as Robin Lee Powell, who added numerous features and was the principal
 maintainer for ten years.
 
-valis also takes inspiration from Dag Odenhall's [vlasisku](http://vlasisku.lojban.org/),
+valis also incorporates routines from Dag Odenhall's [vlasisku](http://vlasisku.lojban.org/),
 a modern web interface to jbovlaste data.
 
 License

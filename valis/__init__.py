@@ -15,12 +15,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import context
-import web
+# pylint: disable=I0011, C0111, import-error, bad-whitespace, no-member
 
-def run(config):
+__version__ = '0.1.0'
+
+import sys
+
+from twisted.python import log
+from twisted.internet import reactor
+
+from . import context, web
+
+def configure(config):
     context.configure(config)
-    import resources
+
+def run():
+    configure_irc_bot()
+    configure_web()
+    reactor.run()
+
+def configure_irc_bot():
+    from . import irc
+    log.startLogging(sys.stdout)
+    irc.configure()
+
+def configure_web():
+    install_web_resources()
+    web.configure()
+
+def install_web_resources():
+    from . import resources, web
     web.add_resources_to_api(resources)
-    context.app.run()
 

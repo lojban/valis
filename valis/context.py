@@ -2,10 +2,8 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
-app  = Flask(__name__)
-db   = SQLAlchemy()
-
-VERSION = '0.1.0'
+app = Flask(__name__)
+db  = SQLAlchemy()
 
 def configure(config):
     configure_application(config)

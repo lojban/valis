@@ -15,13 +15,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from flask import make_response, jsonify
 from flask.ext.restful import Api
+from twisted.internet import reactor
+from twisted.web.wsgi import WSGIResource
+from twisted.web.server import Site
+from flask import make_response, jsonify
 
-from ..context import app, VERSION
+from ..context import app
 import endpoints
 
+DEFAULT_PORT = 5000
+
 api  = Api(app, prefix="/data")
+
+def configure():
+    resource = WSGIResource(reactor, reactor.getThreadPool(), app)
+    site = Site(resource)
+    reactor.listenTCP(configured_web_port(), site)
+
+def configured_web_port():
+    server_name = configured_server_name()
+    if server_name:
+        server_name_components = server_name.split(":")
+        if len(server_name_components) > 1:
+            return int(server_name_components[1])
+    return DEFAULT_PORT
+
+def configured_server_name():
+    return app.config.get('SERVER_NAME')
 
 def add_resources_to_api(resources):
 
