@@ -17,22 +17,25 @@
 
 # pylint: disable=I0011, C0111, import-error, bad-whitespace, no-member
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 import sys
 
 from twisted.python import log
 from twisted.internet import reactor
 
-from . import context, web
+def run(config):
+    configure(config)
+    reactor.run()
 
 def configure(config):
-    context.configure(config)
-
-def run():
+    configure_context(config)
     configure_irc_bot()
     configure_web()
-    reactor.run()
+
+def configure_context(config):
+    from . import context
+    context.configure(config)
 
 def configure_irc_bot():
     from . import irc
@@ -40,10 +43,6 @@ def configure_irc_bot():
     irc.configure()
 
 def configure_web():
-    install_web_resources()
+    from . import web
     web.configure()
-
-def install_web_resources():
-    from . import resources, web
-    web.add_resources_to_api(resources)
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Valis</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% assets "styles" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+
+  </head>
+
+  <body>
+
+    {% block body %}{% endblock %}
+
+    {% assets "scripts" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    {% block scripts %}{% endblock %}
+
+    {% include 'handlebars.html' %}
+
+  </body>
+
+</html>
+

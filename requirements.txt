@@ -5,3 +5,4 @@ Flask-SQLAlchemy
 # marshmallow 2.* not yet released, introduces decorators
 git+https://github.com/marshmallow-code/marshmallow.git
 twisted
+Flask-assets

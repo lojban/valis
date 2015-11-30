@@ -57,6 +57,7 @@ class ItemSchema(AbstractItemSchema):
         return data
 
     def _prototype_definition_by_language_tag(self, model):
+        """Return only one definition (the 'prototype') per language"""
         definitions_by_tag = OrderedDict()
         definitions = self._definitions_by_language_tag(model)
         for tag in sorted(definitions.keys()):
@@ -77,7 +78,7 @@ class ItemSchema(AbstractItemSchema):
 
 class CollectionSchema(AbstractCollectionSchema):
 
-    items      = fields.List(fields.Nested(ItemSchema))
+    items      = fields.List(OrderedNested(ItemSchema))
     count      = fields.Int(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
     _links     = fields.Raw(dump_only=True)

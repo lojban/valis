@@ -22,19 +22,19 @@ Then create a configuration file, "config.py":
 API Resources
 -------------
 
-* valsi: /data/valsi
+* valsi: /api/valsi
 
 Lojban words, searchable by type, prefix, suffix, and author,
 including etymologies and a list of definitions by language.
 
 Options: type, user, word_prefix, word_suffix, after_word, limit
 
-* definitions: e.g. /data/valsi/bangu/en
+* definitions: e.g. /api/valsi/bangu/en
 
 Language-specific definitions of lojban words, including examples,
 gloss words and place keywords.
 
-* words: e.g. /data/languages/en/words
+* words: e.g. /api/languages/en/words
 
 Language-specific keywords, including links to definitions where
 they are used.
@@ -44,11 +44,11 @@ Options: word_prefix, word_suffix, after_word, limit
 Live examples from vrici.lojban.org
 ---------------
 
-You can get a definitions view by choosing the language: http://vrici.lojban.org:5555/data/valsi/carce/en
+You can get a definitions view by choosing the language: http://vrici.lojban.org:5555/api/valsi/carce/en
 
-Here, if the user typed in "c", one can use this list to autosuggest http://vrici.lojban.org:5555/data/valsi?word_prefix=c&type=gismu
+Here, if the user typed in "c", one can use this list to autosuggest http://vrici.lojban.org:5555/api/valsi?word_prefix=c&type=gismu
 
-Finally, there's a keywords view: http://vrici.lojban.org:5555/data/languages/eo/words
+Finally, there's a keywords view: http://vrici.lojban.org:5555/api/languages/eo/words
 
 Acknowledgments
 ---------------

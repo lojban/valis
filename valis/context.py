@@ -1,6 +1,9 @@
 
+import warnings
+
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+import sqlalchemy
 
 app = Flask(__name__)
 db  = SQLAlchemy()
@@ -16,7 +19,17 @@ def configure_application(config):
 def configure_database():
     db.init_app(app)
     db.app = app
-    db.reflect(app=app)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", category=sqlalchemy.exc.SAWarning)
+        #
+        # Can't reflect expression-based and partial indexes:
+        #
+        #   valsi_lower_word,
+        #   valsi_unique_word_nospaces,
+        #   natlangwords_lower_word,
+        #   natlangwords_unique_langid_word_null
+        #
+        db.reflect(app=app)
 
 def configure_json():
     app.config['RESTFUL_JSON'] = {

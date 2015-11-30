@@ -1,0 +1,208 @@
+
+html {
+  font-family: sans-serif;
+}
+
+h1, h2 {
+  display: inline;
+  font-family: fantasy;
+}
+
+h1 {
+  color: #009;
+  margin-right: 5px;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+#valis-root {
+  overflow: hidden;
+}
+
+#alis {
+  margin-top: 5px;
+  height: 500px;
+}
+
+#valis-left {
+  float: left;
+  margin-right: 20px;
+}
+
+#valis-right {
+  min-width: 50%;
+}
+
+#valis-input {
+}
+
+#valis-search fieldset {
+  border: 0;
+  padding: 0;
+}
+
+#valis-search fieldset.query {
+  margin-top: 5px;
+}
+
+#valis-query-input {
+  float: left;
+  width: 300px;
+  margin-top: 2px;
+}
+
+#valis-search .selectors {
+  float: left;
+  padding: 0;
+  margin-left: 5px;
+}
+
+ol.valsi-collection, ol.word-collection {
+  list-style: none;
+  padding-left: 0;
+  overflow-y: scroll;
+}
+
+ol.valsi-collection > li, ol.word-collection > li {
+  border-top: 2px solid #009;
+}
+
+ol.loading > li:last-child {
+  background-color: #F0E0FF;
+  opacity: 0.7;
+}
+
+.valsi-item .valsi-type, .valsi-detail .valsi-type {
+  float: right;
+}
+
+.valsi-item a, .valsi-detail a, .word-item a, .word-detail a {
+  text-decoration: none;
+  color: #009;
+}
+
+.word-item hgroup {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.word-detail hgroup {
+  padding-top: 1em;
+}
+
+.word-item h3, .word-item h4, .word-detail h3, .word-detail h4 {
+  display: inline;
+}
+
+.valsi-item .valsi-type, .valsi-detail .valsi-type {
+  float: right;
+}
+
+.valsi-item dt, .valsi-detail dt, .word-detail dt {
+  float: left;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-right: 1em;
+  width: 40px;
+}
+
+.valsi-detail .definition-links ol {
+  list-style: none;
+  margin-bottom: 1em;
+  padding-left: 0;
+}
+
+.valsi-detail .definition-links li {
+  display: inline;
+}
+
+.definition-links a.selected {
+  font-weight: bold;
+}
+
+ol.valsi-definitions {
+  list-style: none;
+  padding-left: 0;
+}
+
+li.valsi-definition {
+  border-top: 1px solid #009;
+}
+
+li.valsi-definition dt {
+  float: left;
+  font-weight: bold;
+  width: 60px;
+}
+
+ol.valsi-definition-keywords {
+  margin-top: 1em;
+  list-style: none;
+  padding-left: 0;
+}
+
+ol.keyword-definitions {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1em;
+}
+
+li.definition-gloss-word, li.keyword-definition {
+  display: inline;
+}
+
+li.definition-gloss-word .word-sense, li.keyword-definition a {
+  margin-right: -0.3em;
+}
+
+li.definition-gloss-word:after, li.keyword-definition:after {
+  content: ", ";
+}
+
+li.definition-gloss-word:last-child:after, li.keyword-definition:last-child:after {
+  content: "";
+}
+
+.valis-tex-error {
+  color: #c00;
+}
+
+@media only screen and (max-width: 640px) {
+
+  #valis-left {
+    float: none;
+  }
+
+  h1 {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  #valis-query-input {
+    width: 200px;
+    margin-left: 2px;
+    float: none;
+  }
+
+  #valis-search .selectors {
+    float: none;
+    margin-left: 0;
+  }
+
+  #alis {
+    display: none;
+  }
+
+}
+

@@ -12,12 +12,13 @@ class ItemSchema(AbstractItemSchema):
     MODEL_FIELDS = [ "valsi", "selmaho", "language", "definition",
                      "jargon", "notes", "examples", "user", "updated_at" ]
 
+    definition_id  = fields.Int()
     valsi          = fields.Nested(valsi.WordSchema, only="word")
     selmaho        = fields.Str()
     language       = fields.Nested(languages.ItemSchema, only="tag")
     definition     = fields.Str()
     gloss_words    = fields.List(fields.Nested(keyword_mappings.ItemSchema))
-    place_keywords = DictionaryField(fields.List(OrderedNested(keyword_mappings.ItemSchema)))
+    place_keywords = DictionaryField(OrderedNested(keyword_mappings.ItemSchema))
     jargon         = fields.Str()
     notes          = fields.Str()
     examples       = fields.List(fields.Nested(examples.ItemSchema))
@@ -28,6 +29,7 @@ class ItemSchema(AbstractItemSchema):
 
     def _build_serialization_dictionary(self, model):
         data = {}
+        data["definition_id"] = model.definitionid
         for field in self.MODEL_FIELDS:
             value = getattr(model, field, None)
             if value:
@@ -44,7 +46,7 @@ class ItemSchema(AbstractItemSchema):
         keywords = model.keywords()
         gloss_words = keywords.pop(0, [])
         if keywords:
-            data["place_keywords"] = keywords
+            data["place_keywords"] = {k : v[0] for k, v in keywords.iteritems()}
         if gloss_words:
             data["gloss_words"] = gloss_words
 
@@ -65,7 +67,7 @@ class ItemSchema(AbstractItemSchema):
 
 class CollectionSchema(AbstractCollectionSchema):
 
-    items      = fields.List(fields.Nested(ItemSchema))
+    items      = fields.List(OrderedNested(ItemSchema))
     updated_at = fields.DateTime(dump_only=True)
     _links     = fields.Raw(dump_only=True)
 

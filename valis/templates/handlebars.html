@@ -1,0 +1,147 @@
+{% raw %}
+
+<script id="valis-layout-template" type="text/x-handlebars-template">
+  <div id="valis-left">
+    <hgroup>
+      <h1><a href="/">VALIS</a></h1>
+      <h2>A Lojbanic Information System</h2>
+    </hgroup>
+    <div id="valis-input"></div>
+    <img id="alis" src="/static/images/alis.jpeg">
+  </div>
+  <div id="valis-right"></div>
+</script>
+
+<script id="valis-search-form-template" type="text/x-handlebars-template">
+  <fieldset class="query">
+    <input id="valis-query-input" type="text" placeholder="search" autocomplete="off" spellcheck="false"/>
+    <fieldset class="selectors">
+      <select id="valis-query-mode">
+        <option value="valsi">valsi</option>
+        <option value="words">keywords</option>
+      </select>
+      <select id="valis-query-valsi-type">
+        <option value="">all types</option>
+        <option value="cmavo">cmavo</option>
+        <option value="cmevla">cmevla</option>
+        <option value="fu'ivla">fu'ivla</option>
+        <option value="gismu">gismu</option>
+        <option value="lujvo">lujvo</option>
+        <option value="bu letteral">bu letterals</option>
+        <option value="cmavo-compound">cmavo compounds</option>
+        <option value="zei-lujvo">zei lujvo</option>
+        <option value="experimental gismu">experimental gismu</option>
+        <option value="experimental cmavo">experimental cmavo</option>
+      </select>
+      <select id="valis-query-language" style="display: none;">
+        <option value="de">Deutsch</option>
+        <option value="en" selected>English</option>
+        <option value="en-simple">Simple English</option>
+        <option value="es">Español</option>
+        <option value="eo">Esperanto</option>
+        <option value="fr">Français</option>
+        <option value="fr-facile">Français facile</option>
+        <option value="jbo">.lojban.</option>
+        <option value="hu">Mayarul</option>
+        <option value="nl">Nederlands</option>
+        <option value="no">norsk</option>
+        <option value="pl">Polsk</option>
+        <option value="ru">Русский</option>
+        <option value="sv">Svenska</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+    </fieldset>
+  </fieldset>
+</script>
+
+<script id="valis-search-results-template" type="text/x-handlebars-template">
+  <div id="valis-search-results-items"></div>
+</script>
+
+<script id="valis-valsi-detail-template" type="text/x-handlebars-template">
+<div class="valsi-type">{{type}}</div>
+<h3><a href="/valsi/{{escapeValsi word}}">{{word}}</a></h3>
+{{#if rafsi}}
+<dl>
+  <dt>rafsi</dt>
+  <dd>{{commify rafsi}}</dd>
+</dl>
+{{/if}}
+<div class="definition-links"></div>
+<div class="definition-detail"></div>
+</script>
+
+<script id="valis-definition-link-template" type="text/x-handlebars-template">
+  <a href="{{uri}}">{{language_code}}</a>
+</script>
+
+<script id="valis-definition-item-template" type="text/x-handlebars-template">
+  <div class="definition-gloss-words"></div>
+  <p>
+    {{{TeX definition language=language}}}
+  </p>
+  <div class="definition-places"></div>
+  {{#if notes}}
+  <p>
+    <strong>notes:</strong>
+    {{{TeX notes language=language}}}
+  </p>
+  {{/if}}
+  {{#if jargon}}
+  <p>
+    <strong>jargon:</strong>
+    {{{TeX jargon language=language}}}
+  </p>
+  {{/if}}
+  <dl>
+    {{#if selmaho}}
+      <dt class="selmaho">selma'o</dt>
+      <dd class="selmaho">{{selmaho}}</dd>
+    {{/if}}
+    <dt>score</dt>
+    <dd>{{score}}</dd>
+    <dt>author</dt>
+    <dd>{{user}}</dd>
+  </dl>
+</script>
+
+<script id="valis-definition-places-template" type="text/x-handlebars-template">
+  <strong>places:</strong>
+  <ol></ol>
+</script>
+
+<script id="valis-keyword-item-template" type="text/x-handlebars-template">
+  <span class="word-sense">
+    <strong>{{word}}</strong>
+    {{#if sense}}
+    ({{sense}})
+    {{/if}}
+  </span>
+</script>
+
+<script id="valis-placeword-item-template" type="text/x-handlebars-template">
+  [ {{convert place}} {{valsi}} ]
+  <span class="word-sense">
+    <strong>{{word}}</strong>
+    {{#if sense}}
+    ({{sense}})
+    {{/if}}
+  </span>
+</script>
+
+<script id="valis-word-detail-template" type="text/x-handlebars-template">
+  <hgroup>
+    <h3>{{word}}</h3>
+    {{#if sense}}
+    <h4>({{sense}})</h4>
+    {{/if}}
+  </hgroup>
+  <div class="keyword-definitions-region"></div>
+</script>
+
+<script id="valis-keyword-definition-template" type="text/x-handlebars-template">
+  <a href="/valsi/{{escapeValsi word}}/{{language}}">{{convert place}}{{word}}</a>
+</script>
+
+{% endraw %}

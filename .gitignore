@@ -1,0 +1,4 @@
+*.pyc
+config.py
+valis/static/.webassets-cache/
+valis/static/gen
