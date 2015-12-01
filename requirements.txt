@@ -6,3 +6,4 @@ Flask-SQLAlchemy
 git+https://github.com/marshmallow-code/marshmallow.git
 twisted
 Flask-assets
+flask-cors

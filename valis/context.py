@@ -2,6 +2,7 @@
 import warnings
 
 from flask import Flask
+from flask.ext.cors import CORS
 from flask.ext.sqlalchemy import SQLAlchemy
 import sqlalchemy
 
@@ -12,6 +13,7 @@ def configure(config):
     configure_application(config)
     configure_database()
     configure_json()
+    configure_cors()
 
 def configure_application(config):
     app.config.from_object(config)
@@ -37,4 +39,9 @@ def configure_json():
         'ensure_ascii' : False,
         'indent'       : 2
     }
+
+def configure_cors():
+    CORS(app, resources={
+        r"/api/*" : { "origins" : "*" }
+    })
 
